@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Silly Billy - Interactive 3D Rag Doll Physics Game">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Silly Billy">
+    
+    <title>Silly Billy</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/css/styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/js/main.js" as="script">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loading-content">
+                <h1>Silly Billy</h1>
+                <div class="loading-spinner"></div>
+                <p>Loading...</p>
+            </div>
+        </div>
+        
+        <!-- Game Canvas -->
+        <canvas id="game-canvas"></canvas>
+        
+        <!-- UI Overlay -->
+        <div id="ui-overlay">
+            <!-- Controls Panel -->
+            <div id="controls-panel">
+                <button id="reset-btn" class="control-btn">Reset</button>
+                <button id="throw-btn" class="control-btn">Throw</button>
+                <button id="punch-btn" class="control-btn">Punch</button>
+                <button id="kick-btn" class="control-btn">Kick</button>
+                <button id="squeeze-btn" class="control-btn">Squeeze</button>
+            </div>
+            
+            <!-- Physics Presets -->
+            <div id="physics-presets">
+                <button id="normal-physics" class="preset-btn active">Normal</button>
+                <button id="bouncy-physics" class="preset-btn">Bouncy</button>
+                <button id="heavy-physics" class="preset-btn">Heavy</button>
+            </div>
+            
+            <!-- Device Motion Indicator -->
+            <div id="motion-indicator">
+                <span id="motion-status">Gyroscope: Disabled</span>
+            </div>
+        </div>
+        
+        <!-- Instructions -->
+        <div id="instructions">
+            <h3>How to Play</h3>
+            <p>• Touch and drag to move the rag doll</p>
+            <p>• Use buttons to perform actions</p>
+            <p>• Tilt your device to rotate the world</p>
+            <p>• Tap to install on home screen</p>
+        </div>
+    </div>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Main App Script -->
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

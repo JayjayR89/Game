@@ -161,31 +161,32 @@ silly-billy/
 └── vite.config.js
 ```
 
-## Questions for Clarification
+## Project Specifications (Confirmed)
 
 ### 3D Model & Art Style
-1. What art style do you prefer for the rag doll? (Realistic, cartoon, stylized, etc.)
-2. Should the rag doll have clothing or be a basic humanoid figure?
-3. Do you want multiple rag doll characters or just one?
-4. What environment/scene should the rag doll be in? (Room, outdoor, abstract, etc.)
+- **Format**: GLB (optimized for web)
+- **Style**: Cartoon human character
+- **Character**: Single human rag doll
+- **Environment**: Outdoor environment with interactive objects
 
 ### Gameplay & Interactions
-5. What specific interactions should be available? (Drag limbs, throw, punch, etc.)
-6. Should there be any game objectives or is it purely sandbox?
-7. Do you want sound effects and background music?
-8. Should there be different physics presets? (Bouncy, heavy, floppy, etc.)
+- **Core Actions**: Drag rag doll, throw, punch, kick, squeeze
+- **Physics**: Realistic human physics
+- **Device Motion**: Rotate entire world based on gyroscope
+- **Audio**: Impact sounds and haptic feedback
+- **Target**: Fun for everyone (all ages)
 
-### Technical Preferences
-9. Do you have a preference for the 3D model format? (GLB is recommended for web)
-10. Should the game work offline?
-11. Do you want to include haptic feedback for mobile devices?
-12. Should there be any social features (sharing, leaderboards, etc.)?
-
-### Monetization & Features
-13. Do you plan to monetize this app?
-14. Should there be in-app purchases or premium features?
-15. Do you want analytics to track user behavior?
-16. Should there be different difficulty levels or physics modes?
+### Recommended Additional Features
+- **Recording & Replay**: Save and replay funny rag doll moments
+- **Screenshot Sharing**: Share funny poses/actions
+- **Physics Presets**: Different rag doll personalities (bouncy, heavy, floppy)
+- **Interactive Objects**: Bouncy balls, trampolines, obstacles
+- **Weather Effects**: Wind affecting rag doll movement
+- **Character Customization**: Different outfits/colors
+- **Achievement System**: Unlock funny achievements
+- **Slow Motion Mode**: For dramatic effect
+- **Reset & Undo**: Quick reset and undo last action
+- **Offline Play**: Works without internet connection
 
 ## Next Steps
 1. Provide the 3D model file

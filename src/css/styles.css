@@ -1,0 +1,320 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Canvas */
+#game-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+}
+
+#game-canvas:active {
+    cursor: grabbing;
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+}
+
+.loading-content h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* UI Overlay */
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Controls Panel */
+#controls-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    pointer-events: auto;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.control-btn {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    min-width: 60px;
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Physics Presets */
+#physics-presets {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+.preset-btn {
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.preset-btn.active {
+    background: #4CAF50;
+    color: white;
+}
+
+.preset-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Motion Indicator */
+#motion-indicator {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    pointer-events: auto;
+}
+
+#motion-status {
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    backdrop-filter: blur(10px);
+    display: block;
+}
+
+/* Instructions */
+#instructions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 300px;
+    backdrop-filter: blur(10px);
+    pointer-events: auto;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+#instructions:hover {
+    opacity: 1;
+}
+
+#instructions h3 {
+    margin-bottom: 15px;
+    color: #4CAF50;
+}
+
+#instructions p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loading-content h1 {
+        font-size: 2rem;
+    }
+    
+    #controls-panel {
+        bottom: 10px;
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .control-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+        min-width: 50px;
+    }
+    
+    #physics-presets {
+        top: 10px;
+        right: 10px;
+    }
+    
+    #motion-indicator {
+        top: 10px;
+        left: 10px;
+    }
+    
+    #instructions {
+        max-width: 280px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    #controls-panel {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 90%;
+    }
+    
+    .control-btn {
+        flex: 1;
+        min-width: 60px;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .control-btn {
+        min-height: 44px;
+    }
+    
+    .preset-btn {
+        min-height: 44px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .control-btn {
+        border: 2px solid white;
+    }
+    
+    .preset-btn {
+        border: 2px solid #333;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .loading-spinner {
+        animation: none;
+    }
+    
+    .loading-content h1 {
+        animation: none;
+    }
+    
+    .control-btn {
+        transition: none;
+    }
+    
+    .preset-btn {
+        transition: none;
+    }
+}
